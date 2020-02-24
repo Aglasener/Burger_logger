@@ -1,3 +1,5 @@
+
+
 <div class="row text-align-center">
     <div class="col-md-12">
         <div class = "page-header text-center">
@@ -5,37 +7,45 @@
         </div>  
     </div>
 </div>
-<div class = "row">
-{{#each Burgers}}
-    {{#if_eq this.devoured 'false'}}
-<div class="col-md-4">
-   <ul class = "list-group" id = "not-devoured"></ul>    
+<div class = "container">
+<div class = "row justify-content-center">
+
+    
+<div class="col-md-4 text-center">
+   <ul class = "list-group" id = "not-devoured" style = "list-style-type: none">
+     {{#each Burgers}}
+     {{#if_eq this.devoured '0'}}    
     <li>
         <p>
+          
             {{this.id}}. {{this.burger_name}}
 
             <button data-burgerid="{{this.id}}" class = "eatburger">Devour Burger!</button>
         </p>
     </li>
+    {{/if_eq}}
+    {{/each}}
     </ul>
 </div>
-    {{else}}
-<div class="col-md-4">
-   <ul class = "list-group" id = "devoured"></ul>    
+   
+<div class="col-md-4 text-center">
+   <ul class = "list-group" id = "devoured" style = "list-style-type: none">
+    {{#each Burgers}} 
+    {{#if_eq this.devoured '1'}}
     <li>
         <p>
+           
             {{this.id}}. {{this.burger_name}}
         </p>
     </li>
-    </ul>
-</div>
     {{/if_eq}}
     {{/each}}
-    
+    </ul>
+</div>
                             
 </div>
-
-<div class = "row">
+</div>
+<div class = "row justify-content-center">
     <div class = "col-md-12 text-center">
 <h2>Add a Burger</h2>
 <form id = "addburger" class = "button-size">
